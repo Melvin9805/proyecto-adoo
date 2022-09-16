@@ -1,0 +1,53 @@
+<app-cabecera></app-cabecera>
+<div class="container">
+  <div class="row justify-content-evenly">
+    <div class="col order-first p-4 mb-4 form-check form-check-inline  border border-dark rounded text-white" id="cuadros">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" [(ngModel)]="readioSelected">
+        <label class="form-check-label font-weight-italic text-center fw-bold" for="inlineRadio1">
+           VICTIMA
+          <br>
+          <span class="font-weight-bold">Directa, Indirecta o 
+            Potencial</span>
+        </label>
+      </div>
+      <div class="col p-4 mb-4 form-check form-check-inline  border border-dark rounded text-white" id="cuadros">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" [(ngModel)]="readioSelected">
+        <label class="form-check-label text-center fw-bold" for="inlineRadio2">
+          <span class="font-weight-bold">
+            Víctima a través de familiar o persona de confianza</span>
+        </label>
+      </div>
+      <div class="col p-4 mb-4 form-check form-check-inline  border border-dark rounded text-white" id="cuadros">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" [(ngModel)]="readioSelected">
+        <label class="form-check-label text-center fw-bold" for="inlineRadio3">
+          <span class="font-weight-bold">Servidor/a público/a o autoridad</span>
+        </label>
+      </div>
+      <div class="col order-last p-4 mb-4 form-check form-check-inline  border border-dark rounded text-white" id="cuadros">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" [(ngModel)]="readioSelected">
+        <label class="form-check-label text-center fw-bold" for="inlineRadio4">
+          <span class="font-weight-bold">Representante legal</span>
+        </label>
+      </div>
+      <br>
+</div>
+<div class="d-flex justify-content-center">
+  <button class="btn btn-light btn-outline-success btn-lg" (click)="showContent()">LLENAR FORMATO</button>
+</div>
+</div>
+<br><br>
+
+    <div *ngIf="showcontent=='option1'">
+      <app-form1></app-form1>
+    </div>
+    <div *ngIf="showcontent=='option2'">
+      <app-form2></app-form2>
+    </div>
+    <div *ngIf="showcontent=='option3'">
+      <app-form3></app-form3>
+    </div>
+    <div *ngIf="showcontent=='option4'">
+      <app-form1></app-form1>
+    </div>
+  <app-footer></app-footer>
+

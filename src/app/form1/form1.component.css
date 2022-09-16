@@ -1,0 +1,10 @@
+.bg-gradient {
+    background-image: var(--bs-gradient) !important;
+}
+.bg-secondary {
+    background-color: #6c757d !important;
+  }
+  hr{
+    background-color: #2e8b57;
+    border-color: #2e8b57;
+  }

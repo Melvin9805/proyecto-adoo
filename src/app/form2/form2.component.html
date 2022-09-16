@@ -1,0 +1,221 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <!--I. Datos del solicitante-->               
+        <span class="input-group-text mb-4 justify-content-center" id="basic-addon1">I. DATOS DEL SOLICITANTE</span>
+        
+        <div class="input-group mb-3">
+            <span class="input-group-text">Nombre (s)</span>
+            <input type="text" formControlName="nombres1" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.nombres1.errors }" placeholder="Nombre(s) de la victima">
+            <div *ngIf="form.nombres1.errors" class="invalid-feedback">
+                <div *ngIf="form.nombres1.errors.required">El nombre o nombres son obligatorio</div>
+            </div> 
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Primer apellido</span>
+            <input type="text" formControlName="primerapellido1" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.primerapellido1.errors }" placeholder="Primer apellido de la victima">
+            <div *ngIf="form.primerapellido1.errors" class="invalid-feedback">
+                <div *ngIf="form.primerapellido1.errors.required">El apellido es obligatorio</div>
+            </div>
+
+            <span class="input-group-text">Segundo apellido</span>
+            <input type="text" formControlName="segundoapellido1" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.segundoapellido1.errors }" placeholder="Segundo apellido de la victima">
+                <div *ngIf="form.segundoapellido1.errors" class="invalid-feedback">
+                    <div *ngIf="form.segundoapellido1.errors.required">El apellido es obligatorio</div>
+                </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Parentesco/relación afectiva</span>
+            <input type="text" formControlName="parentesco1" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.parentesco1.errors }" placeholder="Parentesco con la victima">
+            <div *ngIf="form.parentesco1.errors" class="invalid-feedback">
+                <div *ngIf="form.parentesco1.errors.required">El parentesco es obligatorio</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Teléfono móvil</span>
+            <input type="text" formControlName="telefonomovil1" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.telefonomovil1.errors }" placeholder="10 números">
+            <div *ngIf="form.telefonomovil1.errors" class="invalid-feedback">
+                <div *ngIf="form.telefonomovil1.errors.minlength">Solo 10 números</div>
+            </div>
+
+            <span class="input-group-text">Teléfono fijo</span>
+            <input type="text" formControlName="telefonofijo1" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.telefonofijo1.errors }" placeholder="10 números">
+            <div *ngIf="form.telefonofijo1.errors" class="invalid-feedback">
+                <div *ngIf="form.telefonofijo1.errors.minlength">Solo 10 números</div>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Correo electrónico</span>
+            <input type="text" formControlName="email1" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.email1.errors }" placeholder="email">
+            <div *ngIf="form.email1.errors" class="invalid-feedback">
+                <div *ngIf="form.email1.errors.email">El email debe de ser válido</div>
+            </div>
+        </div> 
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Otros datos de contacto</span>
+            <input type="text" formControlName="otrosdatos1" class="form-control" 
+            placeholder="Otros datos del contacto">
+        </div>
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+                                                        
+        <!--Apartado IV. IDENTIFICACIÓN DE LA VÍCTIMA  mostrarCampos-->
+        <span class="input-group-text mb-4 justify-content-center" id="basic-addon1">IV. IDENTIFICACIÓN DE LA VÍCTIMA</span>
+        <div class="input-group mb-4 px-4">
+            <div class="form-control px-4 form-check input-group-text">
+                <input class="form-check-input" type="radio" name="auxselect" id="Y" [checked]="auxselect" (click)="radioAuxSelect(1)">
+                <span class="" for="identificacion1">
+                  Presenta identificación
+                </span>
+            </div>
+            <div class="input-group-text form-check px-4 form-control">
+                <input class="form-check-input" type="radio" name="auxselect" id="N" [checked]="!auxselect" (click)="radioAuxSelect(2)">
+                <span class="" for="identificacion2">
+                  No presenta identificacion
+                </span>
+            </div>
+
+            <div formArrayName="TipoIdentificacion">
+
+                <span class="input-group-text">Tipo de identificación</span>
+                <select [disabled]="!auxselect" formControlName="tipoiden" id="tipoiden" name="tipoiden" class="form-select form-control" 
+                aria-label=".form-select-sm example" aria-describedby="basic-addon1"
+                [ngClass]="{ 'is-invalid':  form.tipoiden.errors }" placeholder="Tipo de Identificación">
+                    <option value="1">Cartilla del servicio militar</option>
+                    <option value="2">Pasaporte</option>
+                    <option value="3">Cédula profesional</option>
+                    <option value="4">Credencial oficial expedida por el IMSS o ISSSTE</option>
+                    <option value="5">Certificado o constancia de estudios</option>
+                    <option value="6">Constancia de residencia expedida por autoridad local</option>
+                    <option value="7">Tarjeta de residencia temporal</option>
+                    <option value="8">Tarjeta de residencia permanente</option>
+                    <option value="9">Credencial de elector</option>
+                    <option value="10">Otro documento oficial</option>
+                </select>
+                <div >
+                    <input  type="text" formControlName="tipoidenaux" name="tipoiden" class="form-control" placeholder="Especifique">
+                </div> 
+
+            </div>
+
+        </div>
+
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+        <!--Apartado V. LUGAR Y FECHA DE LOS HECHOS-->
+        <span class="input-group-text mb-4 justify-content-center" id="basic-addon1">V. LUGAR Y FECHA DE LOS HECHOS</span>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Calle</span>
+            <input type="text" formControlName="calle_h" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.calle_h.errors }" placeholder="Calle">
+            <div *ngIf="form.calle_h.errors" class="invalid-feedback">
+                <div *ngIf="form.calle_h.errors.required">La calle es obligatoria</div>
+            </div>
+
+            <span class="input-group-text">Número exterior</span>
+            <input type="text" formControlName="n_ext_h" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.n_ext_h.errors }" placeholder="No.Ext">
+                <div *ngIf="form.n_ext_h.errors" class="invalid-feedback">
+                    <div *ngIf="form.n_ext_h.errors.required">El número es obligatorio</div>
+                </div>
+            
+                <span class="input-group-text">Número interior</span>
+            <input type="text" formControlName="n_int_h" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.n_int_h.errors }" placeholder="No.Int">
+                <div *ngIf="form.n_int_h.errors" class="invalid-feedback">
+                    <div *ngIf="form.n_int_h.errors.required">El número es obligatorio</div>
+                </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">C.P.</span>
+            <input type="text" formControlName="cp_h" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.cp_h.errors }" placeholder="Código Postal">
+            <div *ngIf="form.cp_h.errors" class="invalid-feedback">
+                <div *ngIf="form.cp_h.errors.required">EL C.P. es obligatoria</div>
+            </div>
+
+            <span class="input-group-text">Colonia</span>
+            <input type="text" formControlName="colonia_h" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.colonia_h.errors }" placeholder="Colonia">
+                <div *ngIf="form.colonia_h.errors" class="invalid-feedback">
+                    <div *ngIf="form.colonia_h.errors.required">La colonia es obligatoria</div>
+                </div>
+        </div>        
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Localidad</span>
+            <input type="text" formControlName="localidad_h" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.localidad_h.errors }" placeholder="Localidad">
+            <div *ngIf="form.localidad_h.errors" class="invalid-feedback">
+                <div *ngIf="form.localidad_h.errors.required">La localidad es obligatoria</div>
+            </div>
+
+            <span class="input-group-text">Delgación o Municipio</span>
+            <input type="text" formControlName="delegacion_h" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.delegacion_h.errors }" placeholder="Delegacion">
+                <div *ngIf="form.delegacion_h.errors" class="invalid-feedback">
+                    <div *ngIf="form.delegacion_h.errors.required">La delegación es obligatoria</div>
+                </div>
+        </div> 
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Enitdad Federativa</span>
+            <input type="text" formControlName="entidadF_h" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.entidadF_h.errors }" placeholder="Entidad Fed">
+            <div *ngIf="form.entidadF_h.errors" class="invalid-feedback">
+                <div *ngIf="form.entidadF_h.errors.required">La entidad es obligatoria</div>
+            </div>
+<!---->
+            <span class="input-group-text">Fecha</span>
+            <input type="date" formControlName="fecha_h" class="form-control" 
+                [ngClass]="{ 'is-invalid':  form.fecha_h.errors }" >
+                <div *ngIf="form.fecha_h.errors" class="invalid-feedback">
+                    <div *ngIf="form.fecha_h.errors.required">Escribe el número correctamente</div>
+                </div>
+        </div> 
+
+        <div class="input-group mb-3">
+            <span class="input-group-text d-flex p-2">En caso de no conocer todos los datos sobre el <br>
+                lugar donde ocurrieron los hechos victimizantes,<br>
+                favor de proporcionar los que conozca y utilice<br>
+                 esta casilla para agregar otros datos de ubicación</span>
+            <textarea formControlName="datosComp_h" class="form-control" 
+            [ngClass]="{ 'is-invalid':  form.datosComp_h.errors }" placeholder="Nombre de la victima"></textarea>
+            <div *ngIf="form.datosComp_h.errors" class="invalid-feedback">
+                <div *ngIf="form.datosComp_h.errors.required">El nombre es obligatorio</div>
+            </div>
+        </div>
+
+        <span class="input-group-text mb-4" id="basic-addon1">RELATO DE LOS HECHOS</span>
+        <p class="d-flex justify-content-vertical" >Por favor relate las circunstancias de modo, tiempo y lugar, antes, durante y después de los hechos victimizantes. En caso de contar con alguna constancia
+            o documento ministerial, jurisdiccional o de organismos nacionales o internacionales de derechos humanos en donde se dé cuenta del mismo, anexarlo al
+            presente formato. En caso de que los hechos victimizantes atenten contra derechos colectivos, favor de referirlo.</p>
+        <div class="input-group">
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+        <hr class="bg-dark border-2 border-top border-primary">
+        <!--Información complementaria de la persona víctima-->
+            <p class="input-group-text justify-content-center">
+                El presente documento tiene la finalidad de conocer características particulares y condiciones que pudieran suponer mayor vulnerabilidad<br>
+                para las víctimas en razón de su edad, género, preferencia u orientación sexual, identidad o expresión de género, pertenencia a un pueblo<br>
+                o comunidad indígena, condición de discapacidad y otros para contar con información útil para brindar atención especializada</p>
+       
+
+    </form>
+</div>
