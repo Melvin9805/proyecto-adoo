@@ -11,7 +11,7 @@ registerForm!: FormGroup;
 showContent() {
 throw new Error('Method not implemented.');
 }
-  submitted = false;
+  submitted = true;
   aux1: any;
   aux2: any;
   auxselect = false;
@@ -41,13 +41,13 @@ throw new Error('Method not implemented.');
     this.registerForm = this.formBuilder.group({
     
       fecha: ["",Validators.required],
-      lugar: ["",],
+      lugar: ["",Validators.required],
       
       //Seccion 2. Tipo y datos de la victima
       tipo: ["",Validators.required],
       nombre: ["",Validators.required],
-      p_apellido: ["",Validators.required],
-      s_apellido: ["",Validators.required],
+      p_apellido: ["",],
+      s_apellido: ["",],
       f_nacimiento: ["",],
       sexo: ["",Validators.required],
       nacionalidad: ["",Validators.required],

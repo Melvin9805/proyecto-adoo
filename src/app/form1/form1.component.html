@@ -1,6 +1,28 @@
 <div class="container">
     <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
 
+        <div class="container input-group mb-3">
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text">Lugar y Fecha de la solicitud</span>
+                </div>
+                <div class="col">
+                    <input formControlName="lugar" type="text" class="form-control" 
+                    [ngClass]="{ 'is-invalid':  form.lugar.errors }" placeholder="Lugar" aria-label="place">
+                    <div *ngIf="form.lugar.errors" class="invalid-feedback">
+                        <div *ngIf="form.lugar.errors.required">Ingrese el lugar</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <input formControlName="fecha" type="date" class="form-control"
+                    [ngClass]="{ 'is-invalid':  form.fecha.errors }" placeholder="Fecha" aria-label="date">
+                    <div *ngIf="form.fecha.errors" class="invalid-feedback">
+                        <div *ngIf="form.fecha.errors.required">Ingrese la fecha</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="input-group mb-3">
             <span class="input-group-text" id="basic-addon1">II. TIPO Y DATO DE LA VICTIMA</span>
             <select formControlName="tipo" class="form-select form-select-sm form-control" 
@@ -41,11 +63,11 @@
         </div>
 
         <div class="input-group mb-3">
-            <span class="input-group-text">Fecha</span>
+            <span class="input-group-text">Fecha de nacimiento</span>
             <input type="date" formControlName="f_nacimiento" class="form-control" 
             [ngClass]="{ 'is-invalid':  form.f_nacimiento.errors }">
             <div *ngIf="form.f_nacimiento.errors" class="invalid-feedback">
-                <div *ngIf="form.f_nacimiento.errors.required">La fecha es obligatoria</div>
+                <div *ngIf="form.f_nacimiento.errors.required">La fecha de nacimiento es obligatoria</div>
             </div>
 
             <span class="input-group-text" id="basic-addon1">Sexo</span>
@@ -360,6 +382,10 @@
                 para las víctimas en razón de su edad, género, preferencia u orientación sexual, identidad o expresión de género, pertenencia a un pueblo<br>
                 o comunidad indígena, condición de discapacidad y otros para contar con información útil para brindar atención especializada</p>
        
-
+                
+        <div class="text-center">
+            <button class="btn btn-success mr-1" [disabled]="registerForm.invalid">Registrarse</button>
+            <button class="btn btn-danger" type="reset" (click)="onReset()">Cancel</button>
+        </div>
     </form>
 </div>
