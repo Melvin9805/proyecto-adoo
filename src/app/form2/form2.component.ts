@@ -12,7 +12,7 @@ export class Form2Component implements OnInit {
   showContent() {
     throw new Error('Method not implemented.');
     }
-  submitted = false;
+  submitted = true;
   auxselect = false;
 
   radioAuxSelect(x:any){
@@ -27,7 +27,7 @@ export class Form2Component implements OnInit {
     this.registerForm = this.formBuilder.group({
     
       fecha: ["",Validators.required],
-      lugar: ["",],
+      lugar: ["",Validators.required],
       // Seccion 1. Datos del solicitante
       nombres1: ["",Validators.required],
       primerapellido1: ["",Validators.required],
